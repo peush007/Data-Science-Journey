@@ -1,157 +1,104 @@
-Topic: Control Flow — if / elif / else
-📖 What is Control Flow?
+# Day 02 — Control Flow (if / elif / else)
+
+## What is Control Flow?
 
 Control Flow is the mechanism that determines the order in which statements are executed in a program.
 
-By default, Python executes instructions from top to bottom, one line at a time. However, real-world applications rarely follow a straight path. Programs often need to make decisions based on data, user input, or conditions. Control Flow provides this decision-making capability.
+By default, Python executes code from top to bottom. Control Flow allows a program to make decisions and execute different blocks of code depending on conditions.
 
-In simple words, Control Flow allows a program to choose different execution paths depending on whether a condition is True or False.
+Think of it as the "decision-making system" of a program.
 
-Without Control Flow, every program would execute exactly the same way every time, regardless of the data it receives.
+---
 
-🌍 Real World Analogy
+## Why Control Flow Matters in Data Science
 
-Imagine you are standing at a traffic signal.
-
-If the light is Green → Move.
-If the light is Yellow → Slow down.
-Else (Red) → Stop.
-
-Your action depends on a condition.
-
-Computers work in exactly the same way. They evaluate conditions and then decide what action to perform.
-
-🤖 Why Control Flow Matters in Data Science
-
-Every intelligent system makes decisions.
+Almost every Data Science application involves decision making.
 
 Examples:
 
-Netflix Recommendations
+* Classifying customers into Silver, Gold, or Platinum categories
+* Detecting fraudulent transactions
+* Handling missing values in datasets
+* Choosing different actions based on model predictions
+* Filtering useful data from unwanted data
 
-If a user watches thriller movies frequently:
+Without Control Flow, a program cannot make intelligent decisions.
 
-Recommend thriller movies.
+---
 
-Else:
+## The 3 Core Decision Structures
 
-Recommend another category.
-Fraud Detection
+| Structure        | Purpose                               | Example                            |
+| ---------------- | ------------------------------------- | ---------------------------------- |
+| if               | Execute code when a condition is True | Check if marks are greater than 50 |
+| if / else        | Handle True and False outcomes        | Pass or Fail                       |
+| if / elif / else | Handle multiple outcomes              | Grade System                       |
 
-If transaction amount > ₹1,00,000:
+---
 
-Flag transaction for review.
+## The if Statement
 
-Else:
+The if statement checks a condition.
 
-Process normally.
-Customer Segmentation
+If the condition evaluates to True, Python executes the code inside the block.
 
-If purchase amount ≥ ₹10,000:
+If the condition is False, Python skips the block.
 
-Platinum Customer
+Example:
 
-Else if purchase amount ≥ ₹5,000:
-
-Gold Customer
-
-Else:
-
-Basic Customer
-
-Every Machine Learning system ultimately makes decisions based on conditions and rules.
-
-🔹 The if Statement
-
-The if statement is the simplest decision-making structure in Python.
-
-It checks a condition.
-
-If the condition evaluates to True, the block of code inside the if statement executes.
-
-If the condition evaluates to False, Python skips the block.
-
-Syntax
-if condition:
-    statement
-Example
+```python
 marks = 85
 
 if marks >= 50:
-    print("You passed!")
-Output
-You passed!
-Explanation
+    print("Passed")
+```
 
-Python evaluates:
+Output:
 
-85 >= 50
+```text
+Passed
+```
 
-Result:
+---
 
-True
+## The if / else Statement
 
-Since the condition is True, Python executes the print statement.
+The else block executes when the if condition becomes False.
 
-🔹 The if / else Statement
+This allows a program to handle both possible outcomes.
 
-The if statement only handles one outcome.
+Example:
 
-But many situations require two possible outcomes.
-
-This is where else is used.
-
-Syntax
-if condition:
-    statement
-else:
-    statement
-Example
+```python
 marks = 35
 
 if marks >= 50:
-    print("You passed!")
+    print("Passed")
 else:
-    print("You failed!")
-Output
-You failed!
-Explanation
+    print("Failed")
+```
 
-Python evaluates:
+Output:
 
-35 >= 50
+```text
+Failed
+```
 
-Result:
+---
 
-False
+## The if / elif / else Statement
 
-Since the condition is False, the else block executes.
-
-🔹 The if / elif / else Statement
-
-Many real-world situations have more than two possible outcomes.
-
-For these situations Python provides elif (Else If).
+When multiple conditions need to be checked, Python uses elif (Else If).
 
 Python checks conditions from top to bottom.
 
 The first condition that becomes True is executed.
 
-After that, all remaining conditions are skipped.
+All remaining conditions are skipped.
 
-Syntax
-if condition1:
-    statement
+Example:
 
-elif condition2:
-    statement
-
-elif condition3:
-    statement
-
-else:
-    statement
-Example
+```python
 marks = 72
 
 if marks >= 90:
@@ -164,139 +111,197 @@ elif marks >= 60:
     print("Grade C")
 
 else:
-    print("Failed")
-Output
+    print("Grade F")
+```
+
+Output:
+
+```text
 Grade C
-Dry Run
+```
 
-90 condition → False
+---
 
-75 condition → False
+## Comparison Operators
 
-60 condition → True
+Comparison operators are used to compare values.
 
-Execute Grade C
+| Operator | Meaning                  | Example |
+| -------- | ------------------------ | ------- |
+| ==       | Equal To                 | 5 == 5  |
+| !=       | Not Equal To             | 5 != 3  |
+| >        | Greater Than             | 10 > 5  |
+| <        | Less Than                | 3 < 8   |
+| >=       | Greater Than or Equal To | 5 >= 5  |
+| <=       | Less Than or Equal To    | 4 <= 6  |
 
-Stop checking remaining conditions
+These operators always return either True or False.
 
-🔹 Comparison Operators
+---
 
-Comparison operators compare two values and return either True or False.
-
-Operator	Meaning
-==	Equal To
-!=	Not Equal To
->	Greater Than
-<	Less Than
->=	Greater Than or Equal To
-<=	Less Than or Equal To
-Example
-age = 18
-
-if age == 18:
-    print("Exactly 18")
-🔹 Logical Operators
+## Logical Operators
 
 Logical operators combine multiple conditions.
 
-AND Operator
+| Operator | Meaning                             | Example                  |
+| -------- | ----------------------------------- | ------------------------ |
+| and      | All conditions must be True         | age >= 18 and has_id     |
+| or       | At least one condition must be True | is_student or is_teacher |
+| not      | Reverses the condition              | not is_banned            |
 
-All conditions must be True.
+Example:
+
+```python
+age = 20
+has_id = True
 
 if age >= 18 and has_id:
-OR Operator
+    print("Entry Allowed")
+```
 
-At least one condition must be True.
+Output:
 
-if is_student or is_teacher:
-NOT Operator
+```text
+Entry Allowed
+```
 
-Reverses the condition.
+---
 
-if not is_banned:
-🔹 Nested if Statements
+## Nested if Statements
 
-An if statement inside another if statement is called Nested if.
+A Nested if statement is an if statement inside another if statement.
 
-Example
+It is used when one condition should be checked only after another condition becomes True.
+
+Example:
+
+```python
 age = 20
 has_id = True
 
 if age >= 18:
     if has_id:
         print("Entry Allowed")
-Output
+```
+
+Output:
+
+```text
 Entry Allowed
-Explanation
+```
 
-Step 1:
-Check age condition.
+---
 
-Step 2:
-If age condition passes, check ID condition.
+## Real Data Science Applications
 
-Step 3:
-Allow entry only when both conditions are satisfied.
+| Application            | Use of Control Flow              |
+| ---------------------- | -------------------------------- |
+| Customer Segmentation  | Classify customers into groups   |
+| Fraud Detection        | Flag suspicious transactions     |
+| Recommendation Systems | Suggest products or movies       |
+| Data Validation        | Detect missing or invalid values |
+| Loan Approval Systems  | Approve or reject applications   |
 
-⚠️ Common Beginner Mistakes
-Mistake 1
+---
 
-Using = instead of ==
+## Common Mistakes
+
+### Using = instead of ==
 
 Wrong:
 
+```python
 if age = 18:
+```
 
 Correct:
 
+```python
 if age == 18:
-Mistake 2
+```
 
-Missing colon
+### Forgetting Colon
 
 Wrong:
 
+```python
 if marks >= 50
+```
 
 Correct:
 
+```python
 if marks >= 50:
-Mistake 3
+```
 
-Wrong indentation
+### Wrong Indentation
 
 Wrong:
 
+```python
 if marks >= 50:
 print("Passed")
+```
 
 Correct:
 
+```python
 if marks >= 50:
     print("Passed")
-🎯 Interview Questions
-Q1. What is Control Flow?
+```
 
-Control Flow determines the order in which program statements execute based on conditions and decisions.
+### Incorrect Condition Order
 
-Q2. Difference between if and if/else?
+Wrong:
 
-if handles one outcome.
+```python
+if marks >= 50:
+    print("D")
 
-if/else handles two outcomes.
+elif marks >= 90:
+    print("A")
+```
 
-Q3. Difference between if/elif/else and multiple if statements?
+Correct:
 
-if/elif/else executes only the first matching condition.
+```python
+if marks >= 90:
+    print("A")
 
-Multiple if statements evaluate every condition independently.
+elif marks >= 50:
+    print("D")
+```
 
-Q4. Is else mandatory?
+---
 
-No.
+## Interview Questions
 
-else is optional.
+Q: What is Control Flow in Python?
 
-Q5. What happens if multiple elif conditions are True?
+A: Control Flow determines the order in which program statements execute based on conditions and decisions.
 
-Only the first True condition executes.
+Q: What is the difference between if and if/else?
+
+A: if handles one outcome, while if/else handles both True and False outcomes.
+
+Q: What is elif?
+
+A: elif stands for "Else If" and is used to check multiple conditions.
+
+Q: Is else mandatory?
+
+A: No. else is optional in Python.
+
+Q: What happens if multiple elif conditions are True?
+
+A: Python executes only the first True condition and skips the remaining conditions.
+
+---
+
+## Key Takeaway
+
+Control Flow is the decision-making engine of every program.
+
+Using if, if/else, and if/elif/else, Python can evaluate conditions and choose different execution paths.
+
+From customer segmentation to fraud detection and recommendation systems, Control Flow is used everywhere in Data Science and Machine Learning.
